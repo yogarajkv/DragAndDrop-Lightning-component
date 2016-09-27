@@ -1,0 +1,22 @@
+<aura:component controller="DragAndDropDemoController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:hasSObjectName" access="GLOBAL">
+    <aura:attribute name="picsrc" type="String" default="https://s3-us-west-1.amazonaws.com/sfdc-demo/image-placeholder.png"/>    
+    <aura:attribute name="recordId" type="Id" default='0012800000s04jXAAQ'/>    
+    <aura:handler name="init" value="{!this}" action="{!c.onInit}"/>
+    <ltng:require scripts="../../soap/ajax/26.0/connection.js"/>
+    <div class="slds-box small" aura:id="main">
+        <div aura:id="filearea">
+            <header>
+                <h2 class="slds-text-heading--small slds-m-bottom--small">Drag and drop your file here</h2>
+            </header>           
+            <div ondragover="{!c.onDragOver}" ondrop="{!c.onDrop}">
+                <img src="{!v.picsrc}" />                
+            </div>
+        </div>
+        <div class="slds-spinner_container slds-hide" aura:id="spinner">
+            <div class="slds-spinner--brand slds-spinner slds-spinner--medium" aria-hidden="false" role="alert">
+                <div class="slds-spinner__dot-a"></div>
+                <div class="slds-spinner__dot-b"></div>
+            </div>
+  </div>
+    </div>
+</aura:component>
